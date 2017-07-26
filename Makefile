@@ -1,3 +1,6 @@
+# universal-makefile
+# get it here: https://github.com/fedorenchik/universal-makefile.git
+# git clone https://github.com/fedorenchik/universal-makefile.git
 c_cpp_wildcards := *.c *.cpp *.cc *.c++ *.cxx *.C
 most_recent_source := $(shell ls -At $(wildcard $(c_cpp_wildcards)) | head -1)
 
@@ -5,7 +8,7 @@ most_recent_source := $(shell ls -At $(wildcard $(c_cpp_wildcards)) | head -1)
 
 CFLAGS += -Wall -Wextra -ggdb3 -O0
 CXXFLAGS += $(CFLAGS)
-LDFLAGS += -lm -pthread
+LDFLAGS += -rdynamic -lm -pthread
 
 binaries := $(basename $(wildcard $(c_cpp_wildcards)))
 
