@@ -6,9 +6,12 @@ most_recent_source := $(shell ls -At $(wildcard $(c_cpp_wildcards)) | head -1)
 
 .DEFAULT_GOAL := $(basename $(most_recent_source))
 
+BOOST_LIBS += -lboost_filesystem -lboost_system -lboost_regex
+
 CFLAGS += -Wall -Wextra -ggdb3 -O0
-CXXFLAGS += $(CFLAGS)
-LDFLAGS += -rdynamic -lm -pthread
+CXXFLAGS += -std=c++1z $(CFLAGS)
+LDFLAGS += -rdynamic -pthread
+LDLIBS += -pthread -lm $(BOOST_LIBS)
 
 binaries := $(basename $(wildcard $(c_cpp_wildcards)))
 
