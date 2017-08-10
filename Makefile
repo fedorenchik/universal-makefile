@@ -8,7 +8,8 @@ most_recent_source := $(shell ls -At $(wildcard $(c_cpp_wildcards)) | head -1)
 
 BOOST_LIBS += -lboost_filesystem -lboost_system -lboost_regex
 
-CFLAGS += -Wall -Wextra -ggdb3 -O0
+CPPFLAGS += -I.
+CFLAGS += -pthread -Wall -Wextra -ggdb3 -O0
 CXXFLAGS += -std=c++1z $(CFLAGS)
 LDFLAGS += -rdynamic -pthread
 LDLIBS += -pthread -lm $(BOOST_LIBS)
